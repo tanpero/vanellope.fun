@@ -1,0 +1,382 @@
+/* 北欧配色方案 */
+:root {
+    --nordic-background: #ecf4ff;
+    --nordic-text: #5c5c61;
+    --nordic-primary: #4c84ff;
+    --nordic-secondary: #434343;
+    --nordic-muted: #c4c4c4;
+    --nordic-light: #f0f0f0;
+    --nordic-dark: #2c2c2c;
+    --nordic-accent: #ff5a5f;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--nordic-text);
+    background-color: var(--nordic-background);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--nordic-primary);
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    background-color: var(--nordic-secondary);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: var(--nordic-accent);
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px var(--nordic-muted);
+}
+
+article {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--nordic-light);
+}
+
+article h2 {
+    color: var(--nordic-dark);
+    margin-bottom: 10px;
+}
+
+article p {
+    line-height: 1.6;
+}
+
+footer {
+    background-color: var(--nordic-secondary);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin-bottom: 5px;
+    }
+}
+
+/* ...之前的样式... */
+
+/* 侧边栏样式 */
+aside {
+    width: 20%;
+    /* 调整侧边栏宽度 */
+    position: fixed;
+    /* 固定位置 */
+    right: 0;
+    /* 靠右侧 */
+    top: 60px I !important; /* 顶部对齐，但位于顶部横幅下方 */
+    /* 顶部对齐 */
+    bottom: 0;
+    /* 底部对齐 */
+    background-color: var(--nordic-light);
+    padding: 15px;
+    box-shadow: 0 0 10px var(--nordic-muted);
+    overflow-y: auto;
+    /* 如果内容超出侧边栏高度，则显示滚动条 */
+}
+
+
+
+/* 分页样式 */
+.pagination {
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    /* 固定位置 */
+    left: 0;
+    right: 20%;
+    /* 与侧边栏宽度一致 */
+    bottom: 50px;
+    /* 距离底部横幅一定距离 */
+    background-color: #fff;
+    /* 与主内容背景一致 */
+    box-shadow: 0 0 10px var(--nordic-muted);
+    /* 阴影效果 */
+    z-index: 1000;
+    /* 确保分页在内容上方 */
+}
+
+/* 底部横幅样式 */
+footer {
+    background-color: var(--nordic-secondary);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    /* 固定位置 */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* 底部对齐 */
+}
+
+/* 响应式设计 */
+@media (max-width: 800px) {
+    aside {
+        position: static;
+        /* 在小屏幕上不固定侧边栏 */
+        width: auto;
+    }
+
+    main {
+        margin-right: 0;
+        overflow-y: visible;
+        /* 在小屏幕上允许滚动 */
+    }
+
+    .pagination {
+        position: static;
+        /* 在小屏幕上不固定分页 */
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    footer {
+        position: static;
+        /* 在小屏幕上不固定底部横幅 */
+    }
+}
+
+aside h3 {
+    color: var(--nordic-primary);
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li a {
+    color: var(--nordic-text);
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+}
+
+aside ul li a:hover {
+    background-color: var(--nordic-muted);
+}
+
+/* 卡片样式 */
+.card {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 0 0 10px var(--nordic-muted);
+}
+
+
+.pagination a {
+    color: var(--nordic-text);
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid var(--nordic-muted);
+    margin-right: 5px;
+}
+
+.pagination a.active {
+    background-color: var(--nordic-primary);
+    color: #fff;
+    border-color: var(--nordic-primary);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+article {
+    animation: fadeIn 1s;
+}
+
+/* 响应式设计 */
+@media (max-width: 800px) {
+
+    main,
+    aside {
+        float: none;
+        width: auto;
+    }
+}
+
+
+/* 侧边栏样式 */
+aside {
+    width: 20%;
+    /* 侧边栏宽度 */
+    position: fixed;
+    /* 固定位置 */
+    right: 0;
+    /* 靠右侧 */
+    top: 0;
+    /* 顶部对齐 */
+    bottom: 0;
+    /* 底部对齐 */
+    background-color: var(--nordic-light);
+    padding: 15px;
+    box-shadow: 0 0 10px var(--nordic-muted);
+    overflow-y: auto;
+    /* 滚动条 */
+}
+
+/* 主内容区域样式 */
+main {
+    margin-left: 15%;
+    /* 文章列表左移 */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px var(--nordic-muted);
+    overflow-y: auto;
+    /* 滚动条 */
+    height: 100vh;
+    /* 高度视窗 */
+}
+
+/* 文章卡片样式 */
+.card {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 0 0 10px var(--nordic-muted);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    /* 鼠标悬停时上移 */
+}
+
+/* 底部横幅样式 */
+footer {
+    background-color: var(--nordic-secondary);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    /* 固定位置 */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* 底部对齐 */
+}
+
+/* 响应式设计 */
+@media (max-width: 800px) {
+    aside {
+        position: static;
+        /* 小屏幕不固定侧边栏 */
+        width: auto;
+    }
+
+    main {
+        margin-right: 0;
+        margin-left: 0;
+        overflow-y: visible;
+        /* 允许滚动 */
+    }
+
+    footer {
+        position: static;
+        /* 小屏幕不固定底部横幅 */
+    }
+}
+
+
+/* 主内容区域样式 */
+main {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px var(--nordic-muted);
+    min-height: calc(100vh --60px);
+    /* 确保内容区域至少与视窗等高，减去底部横幅的高度 */
+    overflow-y: auto;
+    /* 滚动条 */
+}
+
+/* 底部横幅样式 */
+footer {
+    background-color: var(--nordic-secondary);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    /* 宽度100% */
+    position: absolute;
+    /* 绝对定位 */
+    bottom: 0;
+    /* 底部对齐 */
+    display: none;
+    /* 默认不显示 */
+}
+
+/* 当内容不足以覆盖整个视窗时，显示横幅 */
+main:after {
+    content: '';
+    display: block;
+    height: 60px;
+    /* 与底部横幅高度一致 */
+}
+
+@media (max-width: 800px) {
+    aside {
+        position: static;
+        /* 小屏幕不固定侧边栏 */
+        width: auto;
+    }
+
+    main {
+        margin-right: 0;
+        margin-left: 0;
+        overflow-y: visible;
+        /* 允许滚动 */
+    }
+
+    footer {
+        position: static;
+        /* 小屏幕不固定底部横幅 */
+    }
+}
