@@ -13,6 +13,19 @@ router.get('/', async (ctx) => {
   ctx.body = fs.readFileSync('./public/index.html', 'utf-8');
 });
 
+router.get('/api/info', async (ctx) => {
+  // 构建响应数据
+  const data = {
+    lastUpdated: lastUpdated,
+    totalVisitors: totalVisitors,
+    todayVisitors: todayVisitors,
+  };
+
+  // 设置响应类型为 JSON 并返回数据
+  ctx.type = 'application/json';
+  ctx.body = data;
+});
+
 
 app.use(router.routes()).use(router.allowedMethods());
 
