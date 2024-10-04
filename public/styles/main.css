@@ -13,13 +13,13 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--nordic-text);
-    background-color: var(--nordic-background);
+    background-color: transparent;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: var(--nordic-primary);
+    background-color: transparent;
     padding: 20px;
     text-align: center;
     color: #fff;
@@ -28,7 +28,7 @@ header {
 nav ul {
     list-style: none;
     padding: 0;
-    background-color: var(--nordic-secondary);
+    background-color: transparent;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -43,18 +43,18 @@ nav ul li a {
     text-decoration: none;
     padding: 10px 15px;
     display: inline-block;
-    transition: background-color 0.3s;
+    transition: background-color: transparent;
 }
 
 nav ul li a:hover {
-    background-color: var(--nordic-accent);
+    background-color: transparent;
 }
 
 main {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: transparent;
     box-shadow: 0 0 10px var(--nordic-muted);
 }
 
@@ -74,7 +74,7 @@ article p {
 }
 
 footer {
-    background-color: var(--nordic-secondary);
+    background-color: transparent;
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -92,8 +92,6 @@ footer {
     }
 }
 
-/* ...之前的样式... */
-
 /* 侧边栏样式 */
 aside {
     width: 20%;
@@ -106,7 +104,7 @@ aside {
     /* 顶部对齐 */
     bottom: 0;
     /* 底部对齐 */
-    background-color: var(--nordic-light);
+    background-color: transparent;
     padding: 15px;
     box-shadow: 0 0 10px var(--nordic-muted);
     overflow-y: auto;
@@ -126,7 +124,7 @@ aside {
     /* 与侧边栏宽度一致 */
     bottom: 50px;
     /* 距离底部横幅一定距离 */
-    background-color: #fff;
+    background-color: transparent;
     /* 与主内容背景一致 */
     box-shadow: 0 0 10px var(--nordic-muted);
     /* 阴影效果 */
@@ -136,7 +134,7 @@ aside {
 
 /* 底部横幅样式 */
 footer {
-    background-color: var(--nordic-secondary);
+    background-color: transparent;
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -192,12 +190,12 @@ aside ul li a {
 }
 
 aside ul li a:hover {
-    background-color: var(--nordic-muted);
+    background-color: transparent;
 }
 
 /* 卡片样式 */
 .card {
-    background-color: #fff;
+    background-color: transparent;
     margin-bottom: 20px;
     padding: 15px;
     box-shadow: 0 0 10px var(--nordic-muted);
@@ -213,7 +211,7 @@ aside ul li a:hover {
 }
 
 .pagination a.active {
-    background-color: var(--nordic-primary);
+    background-color: transparent;
     color: #fff;
     border-color: var(--nordic-primary);
 }
@@ -256,7 +254,7 @@ aside {
     /* 顶部对齐 */
     bottom: 0;
     /* 底部对齐 */
-    background-color: var(--nordic-light);
+    background-color: transparent;
     padding: 15px;
     box-shadow: 0 0 10px var(--nordic-muted);
     overflow-y: auto;
@@ -268,7 +266,7 @@ main {
     margin-left: 15%;
     /* 文章列表左移 */
     padding: 20px;
-    background-color: #fff;
+    background-color: transparent;
     box-shadow: 0 0 10px var(--nordic-muted);
     overflow-y: auto;
     /* 滚动条 */
@@ -278,7 +276,7 @@ main {
 
 /* 文章卡片样式 */
 .card {
-    background-color: #fff;
+    background-color: transparent;
     margin-bottom: 20px;
     padding: 15px;
     box-shadow: 0 0 10px var(--nordic-muted);
@@ -292,7 +290,7 @@ main {
 
 /* 底部横幅样式 */
 footer {
-    background-color: var(--nordic-secondary);
+    background-color: transparent;
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -329,7 +327,7 @@ footer {
 /* 主内容区域样式 */
 main {
     padding: 20px;
-    background-color: #fff;
+    background-color: transparent;
     box-shadow: 0 0 10px var(--nordic-muted);
     min-height: calc(100vh --60px);
     /* 确保内容区域至少与视窗等高，减去底部横幅的高度 */
@@ -339,7 +337,7 @@ main {
 
 /* 底部横幅样式 */
 footer {
-    background-color: var(--nordic-secondary);
+    background-color: transparent;
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -379,4 +377,25 @@ main:after {
         position: static;
         /* 小屏幕不固定底部横幅 */
     }
+}
+
+
+#background {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#content {
+    z-index: 10;
+    padding: 20px;
+    overflow-y: auto;
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    color: blanchedalmond;
 }
