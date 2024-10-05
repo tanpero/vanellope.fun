@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>示例页面</title>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/tanpero/cdn@3/汇文明朝体/font.css">
+<style>
+  body {
+    background-color: black;
+    color: blanchedalmond;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  header {
+    font-family: 汇文明朝体;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+    letter-spacing: 0.1em;
+    line-height: 1.5em;
+    text-indent: 2em;
+    font-size: 1em;
+  }
+  .editor {
+    font-family: SongTi;
+    flex: 1;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 200px;
+    padding: 10px;
+  }
+  .viewer {
+    font-family: SongTi;
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 200px;
+    padding: 10px;
+    overflow-y: auto;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>汉字文章拉丁化 - Latinify</h1>
+</header>
+
+<div class="container">
+  <div class="editor" contenteditable="true">
+    在这里编辑内容……
+  </div>
+  <div class="viewer">
+    <p><b><large>点击此处即可显示拉丁化后的文章</large></b></p>
+    <p>
+      <ul>
+        <li>英文单词、阿拉伯数字保持原样</li>
+        <li>转换频率限制为五秒一次</li>
+      </ul>
+    </p>
+  </div>
+</div>
+
+<script>
+  const throttle = (func, limit) => {
+    let inThrottle;
+    return (...args) => {
+      if (!inThrottle) {
+        func(...args);
+        inThrottle = true;
+        setTimeout(() => (inThrottle = false), limit);
+      }
+    };
+  };
+
+  function convertBrToParagraphs(text) {
+    const brRegex = /\n/gi;
+    const paragraphedText = text.replace(brRegex, '</p>\n<p>');
+    return '<p>' + paragraphedText.trim() + '</p>';
+  }
+
+  
+  const editor = document.querySelector('.editor');
+  const viewer = document.querySelector('.viewer');
+
+  let typed = false
+
+  editor.addEventListener('click', () => {
+    if (!typed) editor.innerHTML = ""
+    typed = true
+  })
+
+  viewer.addEventListener('click', throttle(() => {
+    sendText()
+  }, 5000));
+
+  function sendText() {
+    const text = editor.innerText;
+    fetch('/latinify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ text: text })
+    })
+    .then(response => response.json())
+    .then(data => {
+      viewer.innerHTML = convertBrToParagraphs(data.text);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+</script>
+
+</body>
+</html>

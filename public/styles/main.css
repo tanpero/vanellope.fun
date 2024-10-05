@@ -399,3 +399,15 @@ main:after {
     width: 100%;
     color: blanchedalmond;
 }
+
+@font-face {
+    font-family: 'Elite'; /* 这里的 'Elite' 是你为字体定义的名字，可以在 CSS 中通过这个名字来引用 */
+    src: url('https://cdn.jsdelivr.net/gh/tanpero/cdn@4/elite.ttf') format('truetype'); /* 'path/to/elite.ttf' 是字体文件的路径 */
+    font-weight: normal; /* 字体粗细 */
+    font-style: normal; /* 字体样式 */
+}
+
+
+#heading {
+    font-family: 'Elite';
+}

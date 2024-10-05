@@ -13,7 +13,7 @@
   <div class="_"><canvas id="background"></canvas></div>
   <div id="content">
     <header>
-      <h1>Welcome to My Academic Blog</h1>
+      <h1 id="heading">Welcome to My Academic Blog</h1>
     </header>
     <nav>
       <ul>
@@ -52,6 +52,15 @@
       <p>© 2024 My Academic Blog</p>
     </footer>
   </div>
+  <script>
+    (() => {
+      const canvas = document.getElementById('background');
+      starrysky.init(canvas);
+      starrysky.render();
+      starrysky.setStarSpeedLevel(0.0005);
+    })()
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.21.0/dist/core.min.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 </html>

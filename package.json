@@ -16,6 +16,8 @@
     "koa-router": "^13.0.1",
     "koa-static": "^5.0.0",
     "koa-views": "^8.1.0",
+    "nodejieba": "^3.4.3",
+    "pinyin-pro": "^3.25.0",
     "timeago": "^1.6.7"
   }
 }
