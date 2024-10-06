@@ -1,381 +1,211 @@
-/* 北欧配色方案 */
-:root {
-    --nordic-background: #ecf4ff;
-    --nordic-text: #5c5c61;
-    --nordic-primary: #4c84ff;
-    --nordic-secondary: #434343;
-    --nordic-muted: #c4c4c4;
-    --nordic-light: #f0f0f0;
-    --nordic-dark: #2c2c2c;
-    --nordic-accent: #ff5a5f;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--nordic-text);
-    background-color: transparent;
+/* 重置一些默认的样式 */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-header {
-    background-color: transparent;
-    padding: 20px;
-    text-align: center;
-    color: #fff;
+body, html {
+    width: 100%;
+    height: 100%;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    background-color: transparent;
-    text-align: center;
+/* 顶部标题横幅的样式 */
+.banner {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+/* 主体容器的样式 */
+.container {
+    padding: 60px 0 0; /* 顶部留出标题横幅的高度 */
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px; /* 根据实际设计调整 */
+}
+
+/* 主体内容的布局样式 */
+.main-content {
     display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin-right: 10px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: inline-block;
-    transition: background-color: transparent;
-}
-
-nav ul li a:hover {
-    background-color: transparent;
-}
-
-main {
-    max-width: 800px;
-    margin: 20px auto;
+    justify-content: space-between;
     padding: 20px;
+}
+
+.left-side, .right-side {
+    width: 45%;
+}
+
+/* 诗句卡片的样式 */
+.poem-card {
+    width: 100%;
+    height: 70%;
     background-color: transparent;
-    box-shadow: 0 0 10px var(--nordic-muted);
+    border-color: blanchedalmond;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-article {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--nordic-light);
-}
-
-article h2 {
-    color: var(--nordic-dark);
-    margin-bottom: 10px;
-}
-
-article p {
-    line-height: 1.6;
-}
-
-footer {
-    background-color: transparent;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
+/* 标签卡片的样式 */
+.tags-container {
+    display: flex;
+    justify-content: space-around;
     margin-top: 20px;
 }
 
-/* 响应式设计 */
-@media (max-width: 600px) {
-    nav ul {
+.tag-card {
+    background-color: transparent;
+    border-color: blanchedalmond;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px;
+    transition: width 0.3s ease;
+    width: 30%;
+    text-align: center;
+}
+
+.tag-card:hover {
+    width: 40%;
+}
+
+/* 个人信息卡片的样式 */
+.personal-info-card {
+    width: 100%;
+    background-color: transparent;
+    border-color: blanchedalmond;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 博文区域的布局样式 */
+.blog-area {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 博文卡片之间的空隙 */
+}
+
+/* 博文卡片的样式 */
+.blog-card {
+    width: calc(33.333% - 20px); /* 减去空隙的宽度 */
+    background-color: transparent;
+    border-color: blanchedalmond;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 空卡片的样式 */
+.empty-card {
+    width: 30%;
+    background-color: transparent;
+    border-color: blanchedalmond;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 确保卡片在小屏幕上也能良好显示 */
+@media (max-width: 768px) {
+    .main-content, .blog-area {
         flex-direction: column;
     }
 
-    nav ul li {
-        margin-bottom: 5px;
+    .left-side, .right-side, .blog-card, .empty-card {
+        width: 100%;
+    }
+
+    .blog-card {
+        width: 100%;
     }
 }
 
-/* 侧边栏样式 */
-aside {
-    width: 20%;
-    /* 调整侧边栏宽度 */
-    position: fixed;
-    /* 固定位置 */
-    right: 0;
-    /* 靠右侧 */
-    top: 60px I !important; /* 顶部对齐，但位于顶部横幅下方 */
-    /* 顶部对齐 */
-    bottom: 0;
-    /* 底部对齐 */
-    background-color: transparent;
-    padding: 15px;
-    box-shadow: 0 0 10px var(--nordic-muted);
-    overflow-y: auto;
-    /* 如果内容超出侧边栏高度，则显示滚动条 */
+/* 卡片背景颜色和边框颜色 */
+.poem-card, .personal-info-card, .blog-card, .empty-card, .tag-card {
+    background-color: rgba(255, 192, 203, 0.5); /* 半透明粉红色 */
+    border: 2px solid #ffcccb; /* 不透明粉红色边框 */
+    transition: box-shadow 0.3s ease; /* 鼠标动效过渡 */
 }
 
+/* 卡片背景颜色的四种变体 */
+.poem-card {
+    background-color: rgba(255, 182, 193, 0.5); /* 半透明粉蓝色 */
+    border-color: #ffb6c1;
+}
 
+.personal-info-card {
+    background-color: rgba(255, 255, 0, 0.5); /* 半透明明黄色 */
+    border-color: #ffff00;
+}
 
-/* 分页样式 */
-.pagination {
-    text-align: center;
+.empty-card {
+    background-color: rgba(173, 255, 47, 0.5); /* 半透明粉绿色 */
+    border-color: #adff2f;
+}
+
+/* 标签卡片之间的间距和高度 */
+.tags-container {
+    gap: 30px; /* 增大标签卡片之间的间距 */
+}
+
+.tag-card {
+    margin-bottom: 20px; /* 增大标签卡片的高度 */
+    height: 60px; /* 增大标签卡片的高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 鼠标移入时的发光效果 */
+.poem-card:hover, .personal-info-card:hover, .blog-card:hover, .empty-card:hover, .tag-card:hover {
+    box-shadow: 0 0 10px 5px; /* 鼠标移入时发光效果 */
+}
+
+/* 增加所有卡片的高度 */
+.poem-card, .personal-info-card, .blog-card, .empty-card {
+    height: auto; /* 根据内容自动调整高度 */
+    min-height: 300px; /* 最小高度 */
+}
+/* 修改后的博文区域和空卡片区域的布局代码 */
+.main-content {
+    display: flex;
+    justify-content: space-between;
     padding: 20px;
-    position: fixed;
-    /* 固定位置 */
-    left: 0;
-    right: 20%;
-    /* 与侧边栏宽度一致 */
-    bottom: 50px;
-    /* 距离底部横幅一定距离 */
-    background-color: transparent;
-    /* 与主内容背景一致 */
-    box-shadow: 0 0 10px var(--nordic-muted);
-    /* 阴影效果 */
-    z-index: 1000;
-    /* 确保分页在内容上方 */
 }
 
-/* 底部横幅样式 */
-footer {
-    background-color: transparent;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    /* 固定位置 */
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* 底部对齐 */
+.blog-area {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 博文卡片之间的空隙 */
 }
 
-/* 响应式设计 */
-@media (max-width: 800px) {
-    aside {
-        position: static;
-        /* 在小屏幕上不固定侧边栏 */
-        width: auto;
-    }
-
-    main {
-        margin-right: 0;
-        overflow-y: visible;
-        /* 在小屏幕上允许滚动 */
-    }
-
-    .pagination {
-        position: static;
-        /* 在小屏幕上不固定分页 */
-        background-color: transparent;
-        box-shadow: none;
-    }
-
-    footer {
-        position: static;
-        /* 在小屏幕上不固定底部横幅 */
-    }
-}
-
-aside h3 {
-    color: var(--nordic-primary);
-}
-
-aside ul {
-    list-style: none;
-    padding: 0;
-}
-
-aside ul li a {
-    color: var(--nordic-text);
-    text-decoration: none;
-    display: block;
-    padding: 5px;
-}
-
-aside ul li a:hover {
-    background-color: transparent;
-}
-
-/* 卡片样式 */
-.card {
-    background-color: transparent;
-    margin-bottom: 20px;
-    padding: 15px;
-    box-shadow: 0 0 10px var(--nordic-muted);
-}
-
-
-.pagination a {
-    color: var(--nordic-text);
-    padding: 5px 10px;
-    text-decoration: none;
-    border: 1px solid var(--nordic-muted);
-    margin-right: 5px;
-}
-
-.pagination a.active {
-    background-color: transparent;
-    color: #fff;
-    border-color: var(--nordic-primary);
-}
-
-/* 动画效果 */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-article {
-    animation: fadeIn 1s;
-}
-
-/* 响应式设计 */
-@media (max-width: 800px) {
-
-    main,
-    aside {
-        float: none;
-        width: auto;
-    }
-}
-
-
-/* 侧边栏样式 */
-aside {
-    width: 20%;
-    /* 侧边栏宽度 */
-    position: fixed;
-    /* 固定位置 */
-    right: 0;
-    /* 靠右侧 */
-    top: 0;
-    /* 顶部对齐 */
-    bottom: 0;
-    /* 底部对齐 */
-    background-color: transparent;
-    padding: 15px;
-    box-shadow: 0 0 10px var(--nordic-muted);
-    overflow-y: auto;
-    /* 滚动条 */
-}
-
-/* 主内容区域样式 */
-main {
-    margin-left: 15%;
-    /* 文章列表左移 */
+.empty-card {
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 20px;
-    background-color: transparent;
-    box-shadow: 0 0 10px var(--nordic-muted);
-    overflow-y: auto;
-    /* 滚动条 */
-    height: 100vh;
-    /* 高度视窗 */
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease; /* 鼠标动效过渡 */
 }
 
-/* 文章卡片样式 */
-.card {
-    background-color: transparent;
-    margin-bottom: 20px;
-    padding: 15px;
-    box-shadow: 0 0 10px var(--nordic-muted);
-    transition: transform 0.3s ease-in-out;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    /* 鼠标悬停时上移 */
-}
-
-/* 底部横幅样式 */
-footer {
-    background-color: transparent;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    /* 固定位置 */
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* 底部对齐 */
-}
-
-/* 响应式设计 */
-@media (max-width: 800px) {
-    aside {
-        position: static;
-        /* 小屏幕不固定侧边栏 */
-        width: auto;
+/* 响应式设计调整 */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
     }
 
-    main {
-        margin-right: 0;
-        margin-left: 0;
-        overflow-y: visible;
-        /* 允许滚动 */
-    }
-
-    footer {
-        position: static;
-        /* 小屏幕不固定底部横幅 */
-    }
-}
-
-
-/* 主内容区域样式 */
-main {
-    padding: 20px;
-    background-color: transparent;
-    box-shadow: 0 0 10px var(--nordic-muted);
-    min-height: calc(100vh --60px);
-    /* 确保内容区域至少与视窗等高，减去底部横幅的高度 */
-    overflow-y: auto;
-    /* 滚动条 */
-}
-
-/* 底部横幅样式 */
-footer {
-    background-color: transparent;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    /* 宽度100% */
-    position: absolute;
-    /* 绝对定位 */
-    bottom: 0;
-    /* 底部对齐 */
-    display: none;
-    /* 默认不显示 */
-}
-
-/* 当内容不足以覆盖整个视窗时，显示横幅 */
-main:after {
-    content: '';
-    display: block;
-    height: 60px;
-    /* 与底部横幅高度一致 */
-}
-
-@media (max-width: 800px) {
-    aside {
-        position: static;
-        /* 小屏幕不固定侧边栏 */
-        width: auto;
-    }
-
-    main {
-        margin-right: 0;
-        margin-left: 0;
-        overflow-y: visible;
-        /* 允许滚动 */
-    }
-
-    footer {
-        position: static;
-        /* 小屏幕不固定底部横幅 */
+    .blog-area, .empty-card {
+        width: 100%;
     }
 }
 
@@ -387,17 +217,12 @@ main:after {
     left: 0;
     width: 100vw;
     height: 100vh;
+    z-index: -1000;
 }
 
 #content {
     z-index: 10;
-    padding: 20px;
-    overflow-y: auto;
-    position: relative;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    color: blanchedalmond;
+    color: blanchedalmond !important;
 }
 
 @font-face {
@@ -408,6 +233,8 @@ main:after {
 }
 
 
-#heading {
+.banner {
     font-family: 'Elite';
+    text-align: center;
+    font-size: 3em;
 }

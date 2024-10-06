@@ -1,6 +1,6 @@
 
 
-const heading = document.getElementById('heading');
+const heading = document.querySelector('.banner')
 
 const typewriter = new Typewriter(heading, {
   loop: true,
