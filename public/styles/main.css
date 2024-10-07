@@ -76,26 +76,49 @@ body, html {
 /* 个人信息卡片的样式 */
 .personal-info-card {
     width: 100%;
-    background-color: transparent;
     border-color: blanchedalmond;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 20px;
     box-sizing: border-box;
+    background: linear-gradient(-45deg, rgba(113, 55, 0, 0.5), rgba(0, 118, 35, 0.5),
+        rgba(0, 97, 126, 0.5), rgba(0, 0, 139, 0.5), rgba(128, 0, 128, 0.5));
+    /* 背景尺寸 - 比容器大几倍 */
+    background-size: 600% 600%;
+    /* 循环动画 - 控制背景移动 */
+    animation: gradientBG 15s ease infinite;
 }
 
-/* 博文区域的布局样式 */
+.personal-info-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+}
+
+
+@keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+}
+
 .blog-area {
     width: 70%;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* 博文卡片之间的空隙 */
+    gap: 20px;
 }
 
-/* 博文卡片的样式 */
 .blog-card {
-    width: calc(33.333% - 20px); /* 减去空隙的宽度 */
-    background-color: transparent;
+    width: calc(33.333% - 20px); 
     border-color: blanchedalmond;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -105,7 +128,6 @@ body, html {
 
 /* 空卡片的样式 */
 .empty-card {
-    width: 30%;
     background-color: transparent;
     border-color: blanchedalmond;
     border-radius: 10px;
@@ -142,10 +164,6 @@ body, html {
     border-color: #ffb6c1;
 }
 
-.personal-info-card {
-    background-color: rgba(255, 255, 0, 0.5); /* 半透明明黄色 */
-    border-color: #ffff00;
-}
 
 .empty-card {
     background-color: rgba(173, 255, 47, 0.5); /* 半透明粉绿色 */
@@ -171,10 +189,21 @@ body, html {
 }
 
 /* 增加所有卡片的高度 */
-.poem-card, .personal-info-card, .blog-card, .empty-card {
+.poem-card, .personal-info-card, .blog-card, .stuff-container {
     height: auto; /* 根据内容自动调整高度 */
     min-height: 300px; /* 最小高度 */
 }
+
+.stuff-container {    
+    width: 30%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.empty-card {
+    height: 300px;
+}
+
 /* 修改后的博文区域和空卡片区域的布局代码 */
 .main-content {
     display: flex;
@@ -190,11 +219,8 @@ body, html {
 }
 
 .empty-card {
-    width: 30%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 20px;
-    box-sizing: border-box;
     transition: box-shadow 0.3s ease; /* 鼠标动效过渡 */
 }
 
@@ -208,6 +234,66 @@ body, html {
         width: 100%;
     }
 }
+
+.personal-info-card {
+    border: 2px solid #ffff00; /* 不透明明黄色边框 */
+    transition: box-shadow 0.3s ease; /* 鼠标动效过渡 */
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 213, 76, 0.1);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.avatar img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-links a {
+    margin: 0 10px;
+}
+
+.social-links img {
+    width: 30px;
+    height: 30px;
+}
+
+.poem-card {
+    background-color: rgba(255, 182, 193, 0.5); /* 半透明粉蓝色 */
+    border: 2px solid #ffb6c1; /* 不透明粉蓝色边框 */
+    transition: box-shadow 0.3s ease; /* 鼠标动效过渡 */
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-height: 300px;
+}
+
+.poem-card:hover {
+    box-shadow: 0 0 10px 5px rgba(255, 182, 193, 0.7); /* 鼠标移入时发光效果 */
+}
+
+
 
 
 #background {
