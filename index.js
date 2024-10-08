@@ -1,9 +1,11 @@
-const Koa = require('koa');
-const Router = require('koa-router');
-const staticServe = require('koa-static');
-const bodyParser = require('koa-bodyparser');
-const path = require("path")
-const fs = require("fs")
+import Koa from 'koa';
+import Router from 'koa-router';
+import staticServe from 'koa-static';
+import bodyParser from 'koa-bodyparser';
+import { join as pathJoin } from 'path'; // 注意，path模块的用法稍有不同
+import fs from 'fs'
+import { remark } from 'remark';
+import html from 'remark-html';
 
 const app = new Koa();
 const router = new Router();
@@ -12,14 +14,37 @@ app.use(bodyParser());
 
 
 // 静态文件服务
-app.use(staticServe(__dirname + '/public'));
+app.use(staticServe('./public'));
+
+
+router.get('/blogs', async (ctx) => {
+  const indexJson = await fs.promises.readFile('./public/blogs/index.json', 'utf8');
+  const index = JSON.parse(indexJson);
+  ctx.body = index;
+});
+
+// 获取博文标题
+router.get('/blogs/:id/title', async (ctx) => {
+  const indexJson = await fs.promises.readFile('./public/blogs/index.json', 'utf8');
+  const index = JSON.parse(indexJson);
+  ctx.body = index[ctx.params.id];
+});
+
+// 获取博文内容
+router.get('/blogs/:id/content', async (ctx) => {
+  const filePath = `./public/blogs/${ctx.params.id}.md`;
+  const fileContent = await fs.promises.readFile(filePath, 'utf8');
+  const result = await remark().use(html).process(fileContent);
+  ctx.type = 'html';
+  ctx.body = result.toString();
+});
 
 // 路由配置
 router.get('/', async (ctx) => {
-  ctx.body = fs.readFileSync('./public/index.html', 'utf-8');
+  ctx.body = await fs.promises.readFile('./public/index.html', 'utf-8');
 });
 
-const { latinify } = require("./latinify")
+import latinify from "./latinify.js"
 
 // 用于处理 GET 请求的中间件
 router.get('/latinify', async (ctx) => {

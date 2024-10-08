@@ -1,7 +1,6 @@
-const nodejieba = require("nodejieba")
-const {
-    pinyin
-} = require("pinyin-pro")
+import exp from "constants";
+import nodejieba from "nodejieba";
+import { pinyin } from "pinyin-pro";
 
 nodejieba.load()
 
@@ -104,8 +103,6 @@ function rejoinPinyin(originalWords, pinyinArray) {
     return result.join(' ');
 }
 
-module.exports = {
-    latinify(sentence) {
-        return rejoinPinyin(getWords(sentence), getPinyins(sentence))
-    }
-}
+const latinify = (sentence) => rejoinPinyin(getWords(sentence), getPinyins(sentence))
+
+export default latinify

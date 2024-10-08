@@ -1,4 +1,4 @@
-
+document.addEventListener("DOMContentLoaded", () => document.querySelector(".loader").style.display = "none")
 
 const heading = document.querySelector('.banner')
 
@@ -26,5 +26,20 @@ typewriter
   .pauseFor(1000)
   .start();
 
-  
+async function fetchBlogs() {
+  const response = await fetch('/blogs');
+  const blogs = await response.json();
+  const blogArea = document.querySelector('.blog-area');
+  blogArea.innerHTML = '';
+  for (const id in blogs) {
+    const titleResponse = await fetch(`/blogs/${id}/title`);
+    const titleText = await titleResponse.text();
+    blogArea.innerHTML += `
+    <div class="blog-card">
+      <h2>${titleText}</h2>
+    </div>`
+  }
+}
+
+fetchBlogs();
 
