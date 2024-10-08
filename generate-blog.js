@@ -10,7 +10,7 @@ export default id => `
     <link rel="stylesheet" href="/styles/loading.css">
     <link rel="stylesheet" href="/styles/global.css">
     <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/tanpero/cdn@6/blog-article.css">
-    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/tanpero/cdn@5/露霞文楷/font.css">
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/tanpero/cdn@7/露霞文楷/font.css">
     <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/tanpero/cdn@5/京华老宋体/font.css">
     <style>
         #content {
