@@ -4,6 +4,8 @@ import staticServe from 'koa-static'
 import bodyParser from 'koa-bodyparser'
 import { join as pathJoin } from 'path' // 注意，path模块的用法稍有不同
 import fs from 'fs'
+import path from "path"
+
 import { remark } from 'remark'
 import html from 'remark-html'
 
@@ -39,6 +41,12 @@ router.get('/blogs/:id/content', async (ctx) => {
   ctx.body = result.toString()
 })
 
+import generateBlog from './generate-blog.js'
+
+router.get('/blogs/:id', async (ctx) => {
+  ctx.body = await generateBlog(ctx.params.id)
+})
+
 import getPoem from "./get-poem.js"
 
 router.get('/get-poem', async (ctx) => {
@@ -55,7 +63,7 @@ import latinify from "./latinify.js"
 // 用于处理 GET 请求的中间件
 router.get('/latinify', async (ctx) => {
     // 读取 public/routes/latinify/index.html 文件并发送给客户端
-    const filePath = path.join(__dirname, 'public/routes/latinify/index.html')
+    const filePath = './public/routes/latinify/index.html'
     const content = fs.readFileSync(filePath)
     ctx.type = 'html'
     ctx.body = content

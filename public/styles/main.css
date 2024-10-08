@@ -1,3 +1,5 @@
+@import url('./global.css');
+
 /* 重置一些默认的样式 */
 * {
     margin: 0;
@@ -281,25 +283,6 @@ body, html {
     box-shadow: 0 0 10px 5px rgba(255, 182, 193, 0.7); /* 鼠标移入时发光效果 */
 }
 
-
-
-
-#background {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1000;
-}
-
-#content {
-    overscroll-behavior: contain;
-    z-index: 10;
-    display: none;
-    color: blanchedalmond !important;
-}
 
 @font-face {
     font-family: 'Elite';
