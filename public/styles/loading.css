@@ -4,6 +4,7 @@
     left: 50%;
     transform: translate(-50%,-50%);
     animation: animate 8s linear infinite;
+	z-index: 20;
 }
 
 .pencil {

@@ -8,6 +8,7 @@
 body, html {
     width: 100%;
     height: 100%;
+    overflow-y: auto;
 }
 
 /* 顶部标题横幅的样式 */
@@ -42,13 +43,16 @@ body, html {
 /* 诗句卡片的样式 */
 .poem-card {
     width: 100%;
-    height: 70%;
+    height: 300px; /* 必须 */
+    overflow: hidden; /* 必须 */
     background-color: transparent;
     border-color: blanchedalmond;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 20px;
     box-sizing: border-box;
+    font-family: 露霞文楷;
+    line-height: 1.5em;
 }
 
 /* 标签卡片的样式 */
@@ -58,20 +62,6 @@ body, html {
     margin-top: 20px;
 }
 
-.tag-card {
-    background-color: transparent;
-    border-color: blanchedalmond;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 10px;
-    transition: width 0.3s ease;
-    width: 30%;
-    text-align: center;
-}
-
-.tag-card:hover {
-    width: 40%;
-}
 
 /* 个人信息卡片的样式 */
 .personal-info-card {
@@ -127,7 +117,7 @@ body, html {
 }
 
 /* 空卡片的样式 */
-.empty-card {
+.sidebar-card {
     background-color: transparent;
     border-color: blanchedalmond;
     border-radius: 10px;
@@ -138,11 +128,15 @@ body, html {
 
 /* 确保卡片在小屏幕上也能良好显示 */
 @media (max-width: 768px) {
-    .main-content, .blog-area {
+    .main-content {
         flex-direction: column;
     }
 
-    .left-side, .right-side, .blog-card, .empty-card {
+    .left-side, .right-side, .blog-card, .sidebar-card {
+        width: 100%;
+    }
+
+    .blog-area, .sidebar-card {
         width: 100%;
     }
 
@@ -152,7 +146,7 @@ body, html {
 }
 
 /* 卡片背景颜色和边框颜色 */
-.poem-card, .personal-info-card, .blog-card, .empty-card, .tag-card {
+.poem-card, .personal-info-card, .blog-card, .sidebar-card, .tag-card {
     background-color: rgba(255, 192, 203, 0.5); /* 半透明粉红色 */
     border: 2px solid #ffcccb; /* 不透明粉红色边框 */
     transition: box-shadow 0.3s ease; /* 鼠标动效过渡 */
@@ -165,7 +159,7 @@ body, html {
 }
 
 
-.empty-card {
+.sidebar-card {
     background-color: rgba(173, 255, 47, 0.5); /* 半透明粉绿色 */
     border-color: #adff2f;
 }
@@ -175,21 +169,33 @@ body, html {
     gap: 30px; /* 增大标签卡片之间的间距 */
 }
 
+
 .tag-card {
     margin-bottom: 20px; /* 增大标签卡片的高度 */
     height: 60px; /* 增大标签卡片的高度 */
     display: flex;
     align-items: center;
     justify-content: center;
+    border-color: blanchedalmond;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px;
+    transition: width 0.6s ease;
+    width: 30%;
+    text-align: center;
+}
+
+.tag-card:hover {
+    width: 40%;
 }
 
 /* 鼠标移入时的发光效果 */
-.poem-card:hover, .personal-info-card:hover, .blog-card:hover, .empty-card:hover, .tag-card:hover {
+.poem-card:hover, .personal-info-card:hover, .blog-card:hover, .sidebar-card:hover, .tag-card:hover {
     box-shadow: 0 0 10px 5px; /* 鼠标移入时发光效果 */
 }
 
 /* 增加所有卡片的高度 */
-.poem-card, .personal-info-card, .blog-card, .stuff-container {
+.personal-info-card, .blog-card, .stuff-container {
     height: auto; /* 根据内容自动调整高度 */
     min-height: 300px; /* 最小高度 */
 }
@@ -200,7 +206,7 @@ body, html {
     box-sizing: border-box;
 }
 
-.empty-card {
+.sidebar-card {
     height: 300px;
 }
 
@@ -211,29 +217,12 @@ body, html {
     padding: 20px;
 }
 
-.blog-area {
-    width: 70%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* 博文卡片之间的空隙 */
-}
-
-.empty-card {
+.sidebar-card {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: box-shadow 0.3s ease; /* 鼠标动效过渡 */
 }
 
-/* 响应式设计调整 */
-@media (max-width: 768px) {
-    .main-content {
-        flex-direction: column;
-    }
-
-    .blog-area, .empty-card {
-        width: 100%;
-    }
-}
 
 .personal-info-card {
     border: 2px solid #ffff00; /* 不透明明黄色边框 */
@@ -285,8 +274,7 @@ body, html {
     padding: 20px;
     box-sizing: border-box;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    min-height: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .poem-card:hover {
@@ -307,7 +295,9 @@ body, html {
 }
 
 #content {
+    overscroll-behavior: contain;
     z-index: 10;
+    display: none;
     color: blanchedalmond !important;
 }
 
