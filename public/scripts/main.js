@@ -33,7 +33,7 @@ async function fetchBlogs() {
     const titleResponse = await fetch(`/blogs/${id}/title`)
     const titleText = await titleResponse.text()
     blogArea.innerHTML += `
-    <div class="blog-card">
+    <div class="blog-card" onclick="location.href='/blogs/${id}'">
       <h2>${titleText}</h2>
     </div>`
   }

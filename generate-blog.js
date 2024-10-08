@@ -27,7 +27,7 @@ export default id => `
         }
 
         #title h1 {
-            font-family: 京华老宋体, SongTi;
+            font-family: 京华老宋体, 宋体;
         }
     </style>
     <script src="/scripts/starrysky.js"></script>
