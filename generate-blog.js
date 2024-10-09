@@ -17,8 +17,8 @@ export default id => `
             font-family: 露霞文楷;
             line-height: 1.6;
             padding: 20px;
-            padding-left: 120px;
-            padding-right: 120px;
+            padding-left: 15%;
+            padding-right: 15%;
         }
 
         #title {

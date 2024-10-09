@@ -51,7 +51,7 @@ async function fetchPoem() {
   `
 }
 
-async function fetchAll() {
+async function setup() {
   await fetchPoem()
   await fetchBlogs()
 
@@ -61,5 +61,53 @@ async function fetchAll() {
 }
 
 
+setup()
 
-fetchAll()
+
+const sidebarCard = document.querySelector('.sidebar-card');
+const blogArea = document.querySelector('.blog-area');
+let lastScrollTop = 0;
+let isSidebarFixed = false;
+// sidebar-card和blog-area的初始高度
+const sidebarCardHeight = sidebarCard.offsetHeight;
+const blogAreaHeight = blogArea.offsetHeight;
+
+
+// 视口的高度
+const viewportHeight = window.innerHeight;
+
+function handleScroll() {
+  const currentScrollTop =document.documentElement.scrollTop;
+
+  const blogAreaTop = sidebarCard.getBoundingClientRect().top;
+
+  const isScrollingDown = currentScrollTop > lastScrollTop;
+
+  if (isScrollingDown) {
+    if (blogAreaTop <= parseFloat(window.getComputedStyle(heading).height)) {
+      sidebarCard.style.position = 'fixed';
+      sidebarCard.style.top = '60px';
+      isSidebarFixed = true;
+    }
+    // 如果blog-area底部到达视口内，解除固定sidebar-card
+    else if (blogAreaTop + blogAreaHeight >= viewportHeight) {
+      sidebarCard.style.position = 'static';
+      isSidebarFixed = false;
+    }
+  } 
+  // 当向上滚动时
+  else {
+    // 如果sidebar-card是固定的，并且blog-area顶部距离视口顶部大于sidebarCard高度，解除固定sidebar-card
+    if (isSidebarFixed && blogAreaTop <= sidebarCardHeight) {
+      sidebarCard.style.position = 'static';
+      isSidebarFixed = false;
+    }
+  }
+
+  // 更新上一次滚动的位置
+  lastScrollTop = currentScrollTop;
+}
+
+// 添加滚动监听器
+window.addEventListener('scroll', handleScroll);
+
